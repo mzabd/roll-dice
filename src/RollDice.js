@@ -8,12 +8,7 @@ import { runInThisContext } from 'vm';
 class RollDice extends Component{
         //default props
         static defaultProps = {
-            sides: [
-                {one: "one"},
-                {two: "two"},
-                {three: "three"},
-                {four: "four"},
-            ]
+            sides: ["one", "two", "three", "four", "five", "six"]
         };
 
 
@@ -25,17 +20,30 @@ class RollDice extends Component{
 
 
     roll(){
-        let rand = Math.floor(Math.random() * this.props.face.length);
-        return this.props.face[rand];
+        //pick two rolls
+        let rand = Math.floor(Math.random() * this.props.sides.length);
+        const newDie1 =  this.props.sides[rand];
+        const newDie2 = this.props.sides[Math.floor(Math.random() * this.props.sides.length)];
+        //set new state
+        this.setState({ die1: newDie1, die2: newDie2});
     }
 
     render(){
-        console.log(this.roll());
+
         return(
             <div>
-                <Die face={this.state.die1}/>  <Die face={this.state.die2}/>
+                <div>
+                    {/* passing state as props */}
+                    <Die face={this.state.die1}/>  
+                    <Die face={this.state.die2}/>
+                    
+                </div >
+                <div>
+                    <button onClick={this.roll}>Roll</button>
+                </div>
+            </div>
+ 
 
-            </div >
         );
     }
 }
