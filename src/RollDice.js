@@ -3,7 +3,8 @@
 
 import React, {Component} from 'react';
 import Die from './Die';
-import { runInThisContext } from 'vm';
+import './RollDice.css'
+
 
 class RollDice extends Component{
         //default props
@@ -31,15 +32,15 @@ class RollDice extends Component{
     render(){
 
         return(
-            <div>
-                <div>
+
+            <div className="RollDice">
+                <div className="RollDice-container">
                     {/* passing state as props */}
                     <Die face={this.state.die1}/>  
                     <Die face={this.state.die2}/>
-                    
-                </div >
+                </div>
                 <div>
-                    <button onClick={this.roll}>Roll</button>
+                <button onClick={this.roll}>Roll Dice</button>
                 </div>
             </div>
  

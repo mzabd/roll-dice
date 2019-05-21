@@ -8,9 +8,9 @@ class Die extends Component{
     render(){
         console.log(this.props.rolling);
         return(
-            <span>
+            <div>
                 <i className={`Die fas fa-dice-${this.props.face}`} ></i>
-            </span>
+            </div>
         );
     }
 }
